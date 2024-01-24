@@ -40,6 +40,12 @@ git clone https://github.com/caiolacerdamt/rpa-planilha-python.git
 
 <br><br>
 
+## 🔑 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE.md).
+
+<br><br>
+
 ## 🏅 Desafios e Aprendizados
 
 * Com esse projeto pude aprender mais sobre RPA em Python

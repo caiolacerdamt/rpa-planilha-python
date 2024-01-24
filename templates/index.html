@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload de Arquivo</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 120px 120px 120px 120px;
+      }
+      li {
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+      }
+      input[type="file"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+    <div class="container">
+      <h2>Upload de Planilha Excel</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx" />
+        <input type="submit" value="Enviar" />
+      </form>
+
+      <!-- {% with result = get_flashed_messages(category_filter=["result"]) %} {% if
+      result %}
+      <h3>Contagem por mês e ano:</h3>
+      <ul>
+        {% for item in result %}
+        <li>{{ item[8] }}</li>
+        <li>{{ item[9] }}</li>
+        <li>{{ item[6] }}</li>
+        <li>{{ item[7] }}</li>
+        <li>{{ item[14] }}</li>
+        <li>{{ item[15] }}</li>
+        <li>{{ item[0] }}</li>
+        <li>{{ item[1] }}</li>
+        <li>{{ item[16] }}</li>
+        <li>{{ item[17] }}</li>
+        <li>{{ item[12] }}</li>
+        <li>{{ item[13] }}</li>
+        <li>{{ item[10] }}</li>
+        <li>{{ item[11] }}</li>
+        <li>{{ item[2] }}</li>
+        <li>{{ item[3] }}</li>
+        <li>{{ item[22] }}</li>
+        <li>{{ item[23] }}</li>
+        <li>{{ item[20] }}</li>
+        <li>{{ item[21] }}</li>
+        <li>{{ item[18] }}</li>
+        <li>{{ item[19] }}</li>
+        <li>{{ item[4] }}</li>
+        <li>{{ item[5] }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %} -->
+      
+    </div>
+  </body>
+</html>

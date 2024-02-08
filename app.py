@@ -2,9 +2,12 @@ from flask import Flask, render_template, request, send_file, flash
 import pandas as pd
 from io import BytesIO
 from openpyxl import load_workbook
+import locale
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
+
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
 @app.route('/')
 def index():
@@ -16,7 +19,7 @@ def upload():
     file = request.files['file']
     df = pd.read_excel(file)
 
-    df["Mês"] = pd.to_datetime(df["Mês"], format='%b-%y', errors='coerce').dt.strftime('%b-%y')
+    df["Mês"] = pd.to_datetime(df["Mês"], format='%b/%y', errors='coerce').dt.strftime('%b/%y')
 
     df["Audiências Realizadas"] = df["Audiências Realizadas"] + df["Audiências realizadas no CEJUSC"]
     df["Despachos"] = df["Despachos"] + df["Despachos no CEJUSC"]
@@ -30,7 +33,7 @@ def upload():
     soma_por_mes_ano = df.groupby('Mês')['Excesso de Prazo Sentença'].sum().reset_index()
     soma_por_mes_ano.rename(columns={'Excesso de Prazo Sentença': 'Soma Excesso de Prazo'}, inplace=True)
     soma_por_mes_ano.insert(0, 'Mês_Duplicado', soma_por_mes_ano['Mês'])
-    soma_por_mes_ano['Mês_Duplicado'] = pd.to_datetime(soma_por_mes_ano['Mês_Duplicado'], format='%b-%y').dt.to_period('M')
+    soma_por_mes_ano['Mês_Duplicado'] = pd.to_datetime(soma_por_mes_ano['Mês_Duplicado'], format='%b/%y').dt.to_period('M')
     soma_por_mes_ano = soma_por_mes_ano.sort_values(by='Mês_Duplicado')
     soma_por_mes_ano = soma_por_mes_ano.drop_duplicates(subset=['Mês'], keep='first')
     soma_por_mes_ano.insert(0, 'Magistrado', df['Magistrado'])

@@ -2,13 +2,10 @@ from flask import Flask, render_template, request, send_file, flash
 import pandas as pd
 from io import BytesIO
 from openpyxl import load_workbook
-import locale
+
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
-
-locale.setlocale(locale.LC_ALL, 'pt_BR')
-
 
 @app.route('/')
 def index():

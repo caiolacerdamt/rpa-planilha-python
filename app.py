@@ -7,7 +7,7 @@ import locale
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-locale.setlocale(locale.LC_TIME, 'pt_BR')
+locale.setlocale(locale.LC_ALL, 'pt_BR')
 
 @app.route('/')
 def index():

@@ -9,6 +9,7 @@ app.secret_key = 'supersecretkey'
 
 locale.setlocale(locale.LC_ALL, 'pt_BR')
 
+
 @app.route('/')
 def index():
     return render_template('index.html')

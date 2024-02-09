@@ -3,7 +3,6 @@ import pandas as pd
 from io import BytesIO
 from openpyxl import load_workbook
 
-
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
@@ -49,10 +48,9 @@ def download():
 
     output.seek(0)
 
-    return send_file(output, as_attachment=True, download_name='output.xlsx')
+    name = df['Magistrado'].iloc[1].replace(' ', '_')
+
+    return send_file(output, as_attachment=True, download_name=f"{name}.xlsx")
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
